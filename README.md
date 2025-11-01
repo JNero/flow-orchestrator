@@ -19,7 +19,7 @@ Flow Orchestrator 框架已在企业级生产环境稳定运行，在排序业�
 - **线程复用机制**：复用Tomcat请求线程，避免为每个请求启动新线程，显著降低资源消耗
 - **智能线程分配**：根据节点类型按需使用虚拟线程或平台线程，优化资源利用效率
 - **零额外线程开销**：当图中无并发节点（线性执行）时，不会启动任何额外线程
-- **动态链路剪枝**：根据请求数据属性值动态执行对应链路，智能裁剪不需要的执行路径，类似条件分支优化
+- **动态链路剪枝**：根据请求数据属性值动态执行对应链路，智能裁剪不需要的执行路径，类似于if else
 - **极致性能表现**：框架本身开销极小，30个节点仅需1ms，50个节点仅需2ms
 
 ### 1.3 开发体验优势
@@ -59,7 +59,7 @@ Chain适用于线性业务流程，按顺序执行步骤，数据自动传递。
     <version>1.0.0</version>
 </dependency>
 
-        <!-- Flow Orchestrator Spring Boot 自动配置 -->
+<!-- Flow Orchestrator Spring Boot 自动配置 -->
 <dependency>
 <groupId>com.qiao.flow</groupId>
 <artifactId>flow-orchestrator-spring-boot-starter</artifactId>
