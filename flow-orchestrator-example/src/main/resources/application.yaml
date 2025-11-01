@@ -1,0 +1,40 @@
+# DAG配置
+# 注意：线程池配置已外部化，需要通过实现 ThreadPoolConfig 接口来提供
+# 参考 ExampleThreadPoolConfig.java 中的实现示例
+dag:
+  # DAG清理配置
+  cleanup:
+    preset: BALANCED                 # 策略配置：AGGRESSIVE/BALANCED/CONSERVATIVE
+    
+    # 单独配置（可选，不填或null表示使用策略配置）
+    # eviction-interval-ms: 30000    # 驱逐检查间隔（毫秒），不填则使用策略配置
+    # evictable-idle-time-ms: 60000  # 空闲对象可驱逐时间（毫秒），不填则使用策略配置
+    # scheduler-interval: 300000     # 定时任务调度间隔（毫秒），不填则使用策略配置
+
+# 配置说明：
+# 1. 策略配置优先级：单独配置 > 策略配置 > 默认配置
+# 2. 单独配置可以不填，不填则使用策略配置
+# 3. 策略配置值：
+#    - AGGRESSIVE: 10秒检查，30秒空闲，2分钟清理
+#    - BALANCED: 30秒检查，1分钟空闲，5分钟清理
+#    - CONSERVATIVE: 1分钟检查，2分钟空闲，10分钟清理
+#
+# 配置示例：
+# 1. 只使用策略配置（最简单）：
+#    dag:
+#      cleanup:
+#        preset: AGGRESSIVE
+#
+# 2. 部分自定义配置：
+#    dag:
+#      cleanup:
+#        preset: BALANCED
+#        eviction-interval-ms: 15000  # 只自定义这一个参数
+#
+# 3. 完全自定义配置：
+#    dag:
+#      cleanup:
+#        preset: BALANCED
+#        eviction-interval-ms: 20000
+#        evictable-idle-time-ms: 45000
+#        scheduler-interval: 180000

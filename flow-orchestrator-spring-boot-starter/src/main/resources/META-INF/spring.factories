@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.qiao.flow.orchestrator.starter.config.DagAutoConfiguration,\
+com.qiao.flow.orchestrator.starter.config.DagWebAutoConfiguration
